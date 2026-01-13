@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="seed">
+
+    <!-- PERSON -->
+    <party.Party partyId="P100"
+                 partyTypeEnumId="PERSON"/>
+
+    <party.Person partyId="P100"
+                  firstName="Amit"
+                  lastName="Sharma"/>
+
+    <!-- COMPANY -->
+    <party.Party partyId="P200"
+                 partyTypeEnumId="PARTY_GROUP"/>
+
+    <party.PartyGroup partyId="P200"
+                      groupName="Hotwax Commerce"
+                      description="OMS Company"/>
+
+    <!-- CONTACTS -->
+    <party.ContactMech contactMechId="C100"
+                       contactMechTypeEnumId="EMAIL"
+                       infoString="amit@hotwax.com"/>
+
+    <party.ContactMech contactMechId="C200"
+                       contactMechTypeEnumId="TELECOM_NUMBER"
+                       infoString="+919999999999"/>
+
+    <!-- LINKS -->
+    <party.PartyContactMech partyId="P100"
+                            contactMechId="C100"
+                            fromDate="2025-01-01T00:00:00"/>
+
+    <party.PartyContactMech partyId="P100"
+                            contactMechId="C200"
+                            fromDate="2025-01-01T00:00:00"/>
+
+</entity-facade-xml>
