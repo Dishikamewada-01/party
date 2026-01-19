@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen name="PartyScreen"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/screen-1.0.xsd"
+        require-authentication="anonymous-all">
+
+    <screen-title>Party List</screen-title>
+
+    <actions>
+        <entity-find entity-name="party.Party"
+                     list="partyList"
+                     use-cache="false"
+
+
+                     disable-entity-authorization="true"/>
+
+    </actions>
+
+    <widgets name="rootWidgets">
+        <form-list name="partyListForm"
+                   list="partyList"
+                   skip-form="true">
+
+            <!--  ONLY AUTO GENERATED FIELDS
+            <auto-fields-entity entity-name="party.Party"
+                                field-type="find-display"/>
+            -->
+
+            <field name="partyId">
+                <default-field><display/></default-field>
+            </field>
+
+            <field name="partyTypeEnumId">
+                <default-field><display/></default-field>
+            </field>
+
+            <field name="createdDate">
+                <default-field><display/></default-field>
+            </field>
+        </form-list>
+
+    </widgets>
+
+</screen>
