@@ -4,41 +4,43 @@
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/screen-1.0.xsd"
         require-authentication="anonymous-all">
 
-    <screen-title>Party List</screen-title>
+    <!-- TRANSITION -->
+    <transition name="createParty">
+        <service-call name="create#party.Party"/>
+        <default-response/>
+    </transition>
 
+    <!-- ACTIONS -->
     <actions>
-        <entity-find entity-name="party.Party"
-                     list="partyList"
-                     use-cache="false"
-
-
-                     disable-entity-authorization="true"/>
-
+        <entity-find entity-name="party.Party" list="partyList"/>
     </actions>
 
-    <widgets name="rootWidgets">
-        <form-list name="partyListForm"
-                   list="partyList"
-                   skip-form="true">
+    <!-- WIDGETS -->
+    <widgets>
 
-            <!--  ONLY AUTO GENERATED FIELDS
+        <!-- CREATE PARTY -->
+        <container-dialog id="CreatePartyDialog" button-text="Create Party">
+
+            <form-single name="CreatePartyForm" transition="createParty">
+
+                <!-- AUTO GENERATED FIELDS -->
+                <auto-fields-entity entity-name="party.Party"
+                                    field-type="edit"/>
+
+                <field name="submitButton">
+                    <default-field title="Create">
+                        <submit/>
+                    </default-field>
+                </field>
+
+            </form-single>
+        </container-dialog>
+
+        <!-- PARTY LIST -->
+        <form-list name="PartyListForm" list="partyList">
             <auto-fields-entity entity-name="party.Party"
                                 field-type="find-display"/>
-            -->
-
-            <field name="partyId">
-                <default-field><display/></default-field>
-            </field>
-
-            <field name="partyTypeEnumId">
-                <default-field><display/></default-field>
-            </field>
-
-            <field name="createdDate">
-                <default-field><display/></default-field>
-            </field>
         </form-list>
 
     </widgets>
-
 </screen>
