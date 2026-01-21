@@ -112,6 +112,80 @@ Sample records created:
 
 ---
 
+## 🖥️ Screens & UI
+
+Defined in `PartyScreen.xml`
+
+### 📄 Party List Screen
+- Displays a list of Party records
+- Shows `partyId`, `partyTypeEnumId`, and `createdDate`
+
+---
+
+### ➕ Create Party Form
+Accessible via **Create Party** button.
+
+**Fields**
+- partyId
+- partyTypeEnumId
+- createdDate (auto)
+
+**On Submit**
+- Calls `createParty` service
+- Newly created Party appears in Party List
+
+---
+
+## ⚙️ Services Implemented
+Defined in `PersonServices.xml`
+
+**Service Type**
+- `script`
+- Implemented using Groovy
+
+**Purpose**
+- Creates a `Person` record linked to an existing `Party`
+
+### 🔹 Input Parameters
+
+| Parameter | Required | Description |
+|---------|----------|-------------|
+| partyId | Yes | Must reference an existing Party |
+| firstName | Yes | Person first name |
+| lastName | Yes | Person last name |
+| dateOfBirth | No | Date of birth |
+| auto-parameters | Optional | Allows additional non-PK fields from `party.Person` |
+
+👉 `auto-parameters` enables flexibility for future extensions without changing the service definition.
+
+---
+
+### 🔹 Output Parameters
+
+| Parameter | Description |
+|---------|------------|
+| responseMessage | Success message after record creation |
+
+---
+
+## 🌐 REST API Configuration (Person.rest.xml)
+
+The service is exposed as a REST endpoint.
+
+### 🔹 Endpoint Details
+
+| Method | URL |
+|------|-----|
+| POST | `/rest/s1/party/person` |
+
+### 🔹 Authentication
+- `anonymous-all` (No authentication required)
+
+### 🔹 Mapping
+- REST request directly invokes  
+
+---
+
 ## 🖥 Testing in Moqui
 
 The component was tested using:
